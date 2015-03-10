@@ -12,9 +12,17 @@ Template.questionsSubmit.events({
             continent: $(e.target).find('[name="continent"]:selected').val(),
         }
         
-        question._id = Questions.insert(question);
-        Router.go('questionsPage', question)
+        // question._id = Questions.insert(question);
+        // Router.go('questionsPage', question)
         
-        console.log(question);
+        // console.log(question);
+        
+        Meteor.call('questionsInsert', question, function(error, result){
+            //display error
+            if(error)
+                return alert(error.reason);
+            Router.go('questionsPage', {_id:result._id});
+        })
+        
     }
 })

@@ -18,6 +18,6 @@ var questionsdata = [
 Template.questionsList.helpers({
     // questions : questionsdata
     questions : function(){
-        return Questions.find();
+        return Questions.find({}, {sort: {submitted:-1}});
     }
 });

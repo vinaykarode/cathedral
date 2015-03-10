@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="{{pathFor 'questionsListAntartica'}}">Antartica</a>
             
             <ul class="nav navbar-nav">
-                <li><a href="{{pathFor 'questionsSubmit'}}">Submit</a></li>
+             {{#if currentUser}}   <li><a href="{{pathFor 'questionsSubmit'}}">Submit</a></li> {{/if}}
             </ul>
 
             <div class="collapse navbar-collapse" id="navigation">
