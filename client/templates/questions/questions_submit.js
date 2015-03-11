@@ -22,7 +22,30 @@ Template.questionsSubmit.events({
             if(error)
                 return alert(error.reason);
             Router.go('questionsPage', {_id:result._id});
+            Session.set('radioSelected', '');
         })
         
+    },
+    
+    'change .radio':function(e, template){
+        e.preventDefault();
+        var radio = template.find('input:radio[name=correct]:checked');
+        Session.set("radioSelected", $(radio).val());
+        // console.log($(radio).val());
     }
+});
+
+Template.questionsSubmit.helpers({
+    // radioSelected:function(){
+    //     console.log(Session.get('radioSelected'));
+    //     return Session.get('radioSelected');
+    // },
+    'selectedClass': function(opt){
+        if (opt === Session.get('radioSelected')){
+        // console.log(opt);
+         return "selected"   
+        }
+
+    }
+    
 })

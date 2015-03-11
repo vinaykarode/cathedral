@@ -1,11 +1,18 @@
 <template name='questionsItem'>
     <div class="list-group panel">
         <a href="{{pathFor 'questionsPage'}}"><h3>{{question}}</h3></a>
+        {{#if ownPost}}
+        <a href="{{pathFor "questionsEdit"}}"><span>Edit</span></a>
+        <p>
+            submitted by : {{author}}
+        </p>
+        {{/if}}
         <ul>
-            <li class="list-group-item list-group-item-success">{{optA}}</li>
-            <li class="list-group-item ">{{optB}}</li>
-            <li class="list-group-item ">{{optC}}</li>
-            <li class="list-group-item ">{{optD}}</li>
+            <li class="list-group-item {{correct 'optA'}}">{{optA}}</li>
+            <li class="list-group-item {{correct 'optB'}}">{{optB}}</li>
+            <li class="list-group-item {{correct 'optC'}}">{{optC}}</li>
+            <li class="list-group-item {{correct 'optD'}}">{{optD}}</li>
         </ul>
+
     </div>
 </template>
