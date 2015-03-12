@@ -6,8 +6,8 @@
         {{/if}}
         
             submitted by : {{author}}
-            <a href="{{pathFor 'questionsPage'}}">{{commentsCount}} comments</a>
-        
+            <a href="{{pathFor 'questionsPage'}}">{{pluralize commentsCount "Comment"}}</a>
+            <a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a> {{pluralize votes "Vote"}} 
         <ul>
             <li class="list-group-item {{correct 'optA'}}">{{optA}}</li>
             <li class="list-group-item {{correct 'optB'}}">{{optB}}</li>
