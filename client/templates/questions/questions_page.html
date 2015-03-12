@@ -1,3 +1,16 @@
 <template name="questionsPage">
     {{> questionsItem}}
+    <ul>
+        {{#each comments}}
+            {{> commentItem}}
+        {{/each}}
+    </ul>
+    {{#if currentUser}}
+        {{> commentsSubmit}}
+    {{else}}
+        <p>
+            Please log-in to leave a commenet
+        </p>
+    {{/if}}
+    
 </template>

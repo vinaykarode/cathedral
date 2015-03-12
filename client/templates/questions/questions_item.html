@@ -3,10 +3,11 @@
         <a href="{{pathFor 'questionsPage'}}"><h3>{{question}}</h3></a>
         {{#if ownPost}}
         <a href="{{pathFor "questionsEdit"}}"><span>Edit</span></a>
-        <p>
-            submitted by : {{author}}
-        </p>
         {{/if}}
+        
+            submitted by : {{author}}
+            <a href="{{pathFor 'questionsPage'}}">{{commentsCount}} comments</a>
+        
         <ul>
             <li class="list-group-item {{correct 'optA'}}">{{optA}}</li>
             <li class="list-group-item {{correct 'optB'}}">{{optB}}</li>

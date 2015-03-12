@@ -17,7 +17,7 @@ var questionsdata = [
 
 Template.questionsList.helpers({
     // questions : questionsdata
-    questions : function(){
+    'questions' : function(){
         Session.set('radioSelected', '');
         Session.set('radioEditSelected','');
         return Questions.find({}, {sort: {submitted:-1}});

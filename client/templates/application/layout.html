@@ -13,7 +13,9 @@
             <a class="navbar-brand" href="{{pathFor 'questionsListAntartica'}}">Antartica</a>
             
             <ul class="nav navbar-nav">
-             {{#if currentUser}}   <li><a href="{{pathFor 'questionsSubmit'}}">Submit</a></li> {{/if}}
+             {{#if currentUser}}   <li><a href="{{pathFor 'questionsSubmit'}}">Submit</a></li>
+                                    <li class="dropdown">{{> notifications}}</li>
+             {{/if}}
             </ul>
 
             <div class="collapse navbar-collapse" id="navigation">
