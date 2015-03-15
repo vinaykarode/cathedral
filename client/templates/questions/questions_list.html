@@ -1,8 +1,11 @@
 <template name='questionsList'>
     <div class='container'>
-        {{#each questions}}
+        <div class="wrapper">
+          {{#each questions}}
             {{> questionsItem}}
-        {{/each}}
+        {{/each}}              
+        </div>
+
         
         {{#if nextPath}}
             <a class="load-more" href="{{nextPath}}">Load More</a>
