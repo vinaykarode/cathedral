@@ -1,6 +1,13 @@
 Template.questionsItem.helpers({
     'ownPost':function(){
-        return this.userId === Meteor.userId();
+        var isAdmin = null;
+        var user= Meteor.users.findOne({username: 'admin'});
+        if(user){
+        isAdmin = Meteor.userId() === user._id
+        }
+        // console.log(user._id +'  '+ this.userId + '  '+Meteor.userId());
+        return (this.userId === Meteor.userId()) || isAdmin;
+        // return true;
     },
     'upvotedClass':function(){
         var userId = Meteor.userId();
