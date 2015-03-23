@@ -2,12 +2,15 @@
     <div class="list-group panel post">
         <a href="{{pathFor 'questionsPage'}}"><h3>{{question}}</h3></a>
         {{#if ownPost}}
-        <a href="{{pathFor "questionsEdit"}}"><span>Edit</span></a>
+        <a href="{{pathFor "questionsEdit"}}">Edit</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         {{/if}}
         
-            submitted by : {{author}}
-            <a href="{{pathFor 'questionsPage'}}">{{pluralize commentsCount "Comment"}}</a>
-            <a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a> {{pluralize votes "Vote"}} 
+        
+            submitted by : <strong>{{author}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <!--<a href="{{pathFor 'questionsPage'}}">{{pluralize commentsCount "Comment"}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--<a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a> {{pluralize votes "Vote"}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+            Difficulty: <strong>{{difficult}}</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            Continent: <strong>{{continent}}</strong>
         <ul>
             <li class="list-group-item {{correct 'optA'}}">{{optA}}</li>
             <li class="list-group-item {{correct 'optB'}}">{{optB}}</li>

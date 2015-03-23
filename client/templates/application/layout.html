@@ -4,23 +4,42 @@
             <div class="navbar-header">
                 <a class="navbar-brand" href="{{pathFor 'home'}}">Conquer</a>
             </div>
-            <a class="navbar-brand" href="{{pathFor 'questionsListAsia'}}">Asia</a>
-            <a class="navbar-brand" href="{{pathFor 'questionsListEurope'}}">Europe</a>
-            <a class="navbar-brand" href="{{pathFor 'questionsListNAmerica'}}">N.America</a>
-            <a class="navbar-brand" href="{{pathFor 'questionsListSAmerica'}}">S.America</a>
-            <a class="navbar-brand" href="{{pathFor 'questionsListAustralia'}}">Australia</a>
-            <a class="navbar-brand" href="{{pathFor 'questionsListAfrica'}}">Africa</a>
-            <a class="navbar-brand" href="{{pathFor 'questionsListAntartica'}}">Antartica</a>
+            
+            <!--<a class="navbar-brand" href="{{pathFor 'questionsListEurope'}}">Europe</a>-->
+            <!--<a class="navbar-brand" href="{{pathFor 'questionsListNAmerica'}}">N.America</a>-->
+            <!--<a class="navbar-brand" href="{{pathFor 'questionsListSAmerica'}}">S.America</a>-->
+            <!--<a class="navbar-brand" href="{{pathFor 'questionsListAustralia'}}">Australia</a>-->
+            <!--<a class="navbar-brand" href="{{pathFor 'questionsListAfrica'}}">Africa</a>-->
+            <!--<a class="navbar-brand" href="{{pathFor 'questionsListAntartica'}}">Antartica</a>-->
             
             <ul class="nav navbar-nav">
                 <li class="{{activeRouteClass 'home' 'newQuestions'}}">
-                    <a href="{{pathFor 'newQuestions'}}">New</a>
+                    <a class="navbar-brand" href="{{pathFor 'newQuestions'}}">All</a>
                 </li>
                 <li class="{{activeRouteClass 'bestQuestions'}}">
-                    <a href="{{pathFor 'bestQuestions'}}">Best</a>
+                    <a class="navbar-brand" href="{{pathFor 'bestQuestions'}}">Best</a>
                 </li>
-             {{#if currentUser}}   <li class="{{activeRouteClass 'questionsSubmit'}}"><a href="{{pathFor 'questionsSubmit'}}">Submit</a></li>
-                                    <li class="dropdown">{{> notifications}}</li>
+                <li class="{{activeRouteClass 'asiaQuestions'}}">
+                   <a href="{{pathFor 'asiaQuestions'}}">Asia</a> 
+                </li>     
+                <li class="{{activeRouteClass 'nAmericaQuestions'}}">
+                   <a href="{{pathFor 'nAmericaQuestions'}}">N.America</a> 
+                </li>                
+                <li class="{{activeRouteClass 'sAmericaQuestions'}}">
+                   <a href="{{pathFor 'sAmericaQuestions'}}">S.America</a> 
+                </li>                
+                <li class="{{activeRouteClass 'australiaQuestions'}}">
+                   <a href="{{pathFor 'australiaQuestions'}}">Australia</a> 
+                </li>                
+                <li class="{{activeRouteClass 'africaQuestions'}}">
+                   <a href="{{pathFor 'africaQuestions'}}">Africa</a> 
+                </li>                
+                <li class="{{activeRouteClass 'europeQuestions'}}">
+                   <a href="{{pathFor 'europeQuestions'}}">Europe</a> 
+                </li>
+
+             {{#if currentUser}}   <li class="navbar-right {{activeRouteClass 'questionsSubmit'}}"><a href="{{pathFor 'questionsSubmit'}}">Submit</a></li>
+                                    <li class="navbar-right dropdown">{{> notifications}}</li>
              {{/if}}
             </ul>
 

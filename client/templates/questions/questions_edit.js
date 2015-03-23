@@ -16,6 +16,7 @@ Template.questionsEdit.events({
             optD:$(e.target).find('[name=optD]').val(),
             answer: $(e.target).find('[name=correct]:checked').val(),
             continent: $(e.target).find('[name="continent"]:selected').val(),
+            difficult:$(e.target).find('[name="difficult"]:selected').val()
         }
         
         Questions.update(currentQuestionId, {$set:question}, function(error){
@@ -56,6 +57,11 @@ Template.questionsEdit.helpers({
     'checkedOpt':function(opt){
         if(opt === this.answer){
             return 'checked'
+        }
+    },
+    'selectedDifficulty':function(difficulty){
+        if(difficulty === this.difficult){
+            return "selected"
         }
     }
 });

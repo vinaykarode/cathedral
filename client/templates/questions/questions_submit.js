@@ -10,6 +10,7 @@ Template.questionsSubmit.events({
             optD:$(e.target).find('[name=optD]').val(),
             answer: $(e.target).find('[name=correct]:checked').val(),
             continent: $(e.target).find('[name="continent"]:selected').val(),
+            difficult:$(e.target).find('[name="difficult"]:selected').val()
         }
         
         // question._id = Questions.insert(question);

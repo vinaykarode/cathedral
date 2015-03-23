@@ -52,6 +52,15 @@
                 <option name="continent" value="antartica" selected="{{selectedContinent 'antartica'}}">Antartica</option>
             </select>
         </div>
+        
+        <div class="form-group">
+            <label class="control-label" for="difficult">Select question Difficulty</label>
+            <select class="form-control" id="difficult">
+                <option name="difficult" value="easy" selected="{{selectedDifficulty 'easy'}}">Easy</option>
+                <option name="difficult" value="normal" selected="{{selectedDifficulty 'normal'}}">Normal</option>
+                <option name="difficult" value="difficult" selected="{{selectedDifficulty 'difficult'}}">Difficult</option>
+            </select>
+        </div>
 
         <input type="submit" value="Submit" class="btn btn-primary" />
         <a class='btn btn-danger delete'>Delete</a>
