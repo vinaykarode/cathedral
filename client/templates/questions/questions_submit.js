@@ -17,6 +17,9 @@ Template.questionsSubmit.events({
         // Router.go('questionsPage', question)
         
         // console.log(question);
+        // console.log(question.continent);
+        
+        // Meteor.call('continentCountInc', question.continent);
         
         Meteor.call('questionsInsert', question, function(error, result){
             //display error

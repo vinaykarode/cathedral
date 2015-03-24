@@ -18,4 +18,9 @@ Meteor.publish('comments', function(postId){
 
 Meteor.publish('notifications', function(){
     return Notifications.find();
-})
+});
+
+// Meteor.publish('continentCount', function(){
+//   return ContinentCount.find(); 
+// });
+

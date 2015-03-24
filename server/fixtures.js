@@ -16,3 +16,14 @@
 //     });
     
 // }
+
+if(ContinentCount.find().count() === 0){
+    ContinentCount.insert({
+        asiaCount:0,
+        nAmericaCount:0,
+        sAmericaCount:0,
+        africaCount:0,
+        australiaCount:0,
+        europeCount:0
+    });
+}
