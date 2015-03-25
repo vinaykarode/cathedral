@@ -1,8 +1,8 @@
 <template name="quizPlay">
-    <p>{{question}}</p>
-    <input type="button" class="answer" value= "{{optA}}"/>
-    <input type="button" class="answer" value= "{{optB}}"/>
-    <input type="button" class="answer" value= "{{optC}}"/>
-    <input type="button" class="answer" value= "{{optD}}"/>
-    
+    <p class="quizQuestion">{{question.question}}</p>
+    <input type="button" class="answer" value= "{{question.optA}}" name="optA"/>
+    <input type="button" class="answer" value= "{{question.optB}}" name="optB"/>
+    <input type="button" class="answer" value= "{{question.optC}}" name="optC"/>
+    <input type="button" class="answer" value= "{{question.optD}}" name="optD"/>
+
 </template>

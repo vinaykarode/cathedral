@@ -27,3 +27,4 @@ Meteor.publish('quizQuestion',function(continent){
     check(continent,String);
     return Questions.find({continent:continent});
 })
+

@@ -33,3 +33,7 @@
 //      Questions.update({_id: "BafwRzb8h36AM82ja"},{$set:{random:Math.random()}});  
 //    
 //}
+
+if(Questions.find().count() !== 0){
+    Questions.update({quizQuestionDisplayed:true},{$set:{quizQuestionDisplayed:false}},{multi:true});
+}
