@@ -1,8 +1,10 @@
 <template name="quizPlay">
+    {{#with questionWith}}
     <p class="quizQuestion">{{question}}</p>
     <input type="button" class="answer" value= "{{optA}}" name="optA"/>
     <input type="button" class="answer" value= "{{optB}}" name="optB"/>
     <input type="button" class="answer" value= "{{optC}}" name="optC"/>
     <input type="button" class="answer" value= "{{optD}}" name="optD"/>
-
+    {{answer}}
+    {{/with}}
 </template>

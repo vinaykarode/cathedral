@@ -34,6 +34,6 @@
 //    
 //}
 
-if(Questions.find().count() !== 0){
-    Questions.update({quizQuestionDisplayed:true},{$set:{quizQuestionDisplayed:false}},{multi:true});
-}
+//if(Questions.find().count() !== 0){
+//    Questions.update({quizQuestionDisplayed:true},{$set:{quizQuestionDisplayed:false}},{multi:true});
+//}
