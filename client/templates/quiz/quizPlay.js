@@ -19,19 +19,19 @@ Template.quizPlay.events({
     }
 });
 
-Template.quizPlay.helpers({
-    'question':function(){
-        console.log('hi');
-        // var ids = Session.get('ids');
-        // console.log(ids);
-        // console.log(ids.length);
-        // var randomId = Math.floor(Math.random()*ids.length)+1;
-        // console.log(randomId)
-        // var question = Questions.findOne({_id:ids[randomId]});
-        // console.log(question);
-        // return question;
-    }
-});
+// Template.quizPlay.helpers({
+//     'question':function(){
+//         console.log('hi');
+//         var ids = Session.get('ids');
+//         console.log(ids);
+//         console.log(ids.length);
+//         var randomId = Math.floor(Math.random()*ids.length)+1;
+//         console.log(randomId)
+//         var question = Questions.findOne({_id:ids[randomId]});
+//         console.log(question);
+//         return question;
+//     }
+// });
 
 // Template.quizPlay.rendered= function(){
 //     console.log(Session.get('selectedContinent'));
