@@ -17,13 +17,19 @@
     
 // }
 
-if(ContinentCount.find().count() === 0){
-    ContinentCount.insert({
-        asiaCount:0,
-        nAmericaCount:0,
-        sAmericaCount:0,
-        africaCount:0,
-        australiaCount:0,
-        europeCount:0
-    });
-}
+//if(ContinentCount.find().count() === 0){
+//    ContinentCount.insert({
+//        asiaCount:0,
+//        nAmericaCount:0,
+//        sAmericaCount:0,
+//        africaCount:0,
+//        australiaCount:0,
+//        europeCount:0
+//    });
+//}
+
+//if(Questions.find().count()!== 0){
+//    console.log('updated');
+//      Questions.update({_id: "BafwRzb8h36AM82ja"},{$set:{random:Math.random()}});  
+//    
+//}
