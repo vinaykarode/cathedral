@@ -12,11 +12,26 @@ Template.quizPlay.events({
                 if (error)
                     console.log(error);
                 if (result) {
-                    //console.log(result);
+                    var easyCounter = Session.get('questionEasyCounter') + 1;
+                    Session.set('questionEasyCounter', easyCounter);
+                    console.log('easy counter' + Session.get('questionEasyCounter'));
+                    if(Session.get('questionEasyCounter') >= 2){
+                        Session.set('quizDifficulty','normal');
+                        var normalCounter = Session.get('questionNormalCounter') + 1;
+                        Session.set('questionNormalCounter', normalCounter);
+                        console.log('Normal counter' + Session.get('questionNormalCounter'));
+                        if(Session.get('questionNormalCounter') >= 3){
+                            Session.set('quizDifficulty','difficult');
+                            console.log('difficult counter' + Session.get('quizDifficultCounter'));
+                            return Router.go('quizPlay', {continent: template.data.continent});
+                        }
+                        return Router.go('quizPlay', {continent: template.data.continent});
+                    }
                     Router.go('quizPlay', {continent: template.data.continent});
                 }
             });
-        } else {
+        }
+            else {
             console.log('incorrect answer');
             var postattributes = {
                 _id: template.data._id
@@ -25,11 +40,15 @@ Template.quizPlay.events({
                 if (error)
                     console.log(error);
                 if (result) {
+                    Session.set('questionEasyCounter',0);
+                    Session.set('questionNormalCounter',0);
+                    Session.set('questionDifficultCounter',0);
+                    Session.set('quizDifficulty','easy');
                     //console.log(result);
                     Router.go('quizPlay', {continent: template.data.continent});
                 }
             });
-        }
+        } 
     },
     
     'click .quizReset':function(e,template){
@@ -50,7 +69,8 @@ Template.quizPlay.helpers({
             optB: this.optB,
             optC: this.optC,
             optD: this.optD,
-            answer: this.answer
+            answer: this.answer,
+            difficult:this.difficult
         }
     }
 });
