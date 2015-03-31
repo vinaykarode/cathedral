@@ -4,6 +4,7 @@ Template.quizPlay.events({
         var quizAnswer = $(e.target).val();
         console.log(template.data[this.answer]);
         if (quizAnswer === template.data[this.answer]) {
+            Session.set('counter',15);
             console.log('correct answer');
             var postattributes = {
                 _id: template.data._id
@@ -32,6 +33,7 @@ Template.quizPlay.events({
             });
         }
             else {
+            Session.set('counter',15);
             console.log('incorrect answer');
             var postattributes = {
                 _id: template.data._id
@@ -53,6 +55,7 @@ Template.quizPlay.events({
     
     'click .quizReset':function(e,template){
         e.preventDefault();
+        Session.set('counter',0);
         Meteor.call('quizReset', function(error,result){
             if(error)
                 console.log(error);
