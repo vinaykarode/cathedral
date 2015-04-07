@@ -1,3 +1,73 @@
+@import url('http://fonts.googleapis.com/css?family=Share+Tech');
+@import url('http://fonts.googleapis.com/css?family=Lobster');
+@import url('http://fonts.googleapis.com/css?family=Raleway:300');
+
+body {
+  background: #efefef;
+}
+
+.containerCountdownTimer {
+  width: 400px;
+  height: 200px;
+  position: relative;
+  margin: auto;
+  font-family: 'Lobster', 'Raleway', sans-serif;
+  color: #444;
+}
+
+#time, #svgCountDown {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#time {
+  line-height: 20px;
+  height: 20px;
+  width: 100%;
+  top: 90px;
+  left:-90px;
+  font-size: 43px;
+  text-align: center;
+  color: #3da08d;
+  opacity: 0.8
+}
+
+/*p, .btn {*/
+/*  position: relative;*/
+/*  left: 220px;*/
+/*  width: 200px;*/
+/*  display: block;*/
+/*  text-transform: uppercase;*/
+/*  font-size: 24px;*/
+/*  top: 30px;*/
+/*}*/
+
+/*.btn {*/
+/*  text-align: center;*/
+/*  background: #5fc2af;*/
+/*  color: #fff;*/
+/*  width: 120px;*/
+/*  height: 37px;*/
+/*  line-height: 37px;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*input {*/
+/*  border: 0;*/
+/*  outline: 0;*/
+/*  border-bottom: 1px solid #eee;*/
+/*  width: 30px;*/
+/*  font-family: helvetica;*/
+/*  font-size: 24px;*/
+/*  text-transform: capitalise;*/
+/*  font-family: 'Share Tech', sans-serif;*/
+/*  background: transparent;*/
+  
+/*}*/
+
 .selected{
     background-color: #C1FFC1;
     /*color:red;*/
@@ -26,7 +96,7 @@
   width: 100%;
 }
 
-.continent-map-container{
+.continentmapcontainer{
     width: 1057px;
 	height: 710px;
 
@@ -38,4 +108,13 @@
 	
 	margin: auto;
 
+}
+
+.fade.off {
+  opacity: 0;
+}
+ 
+.fade {
+  opacity: 1;
+  transition: opacity 800ms ease;
 }

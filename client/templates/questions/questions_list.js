@@ -27,6 +27,7 @@ Template.questionsList.helpers({
 Template.questionsList.rendered = function(){
     this.find('.wrapper')._uihooks = {
         insertElement:function(node,next){
+            console.log('inserting element');
           $(node)
             .hide()
             .insertBefore(next)
@@ -34,7 +35,9 @@ Template.questionsList.rendered = function(){
             
         },
         removeElement:function(node,next){
+            console.log('removing element');
           $(node).fadeOut(function(){
+              console.log('faded out');
               $(this).remove();
           });  
         },

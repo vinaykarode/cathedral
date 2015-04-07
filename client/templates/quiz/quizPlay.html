@@ -1,12 +1,20 @@
 <template name="quizPlay">
-    {{#with questionWith}}
-    <p class="quizQuestion">{{question}}</p>
-    <input type="button" class="answer" value= "{{optA}}" name="optA"/>
-    <input type="button" class="answer" value= "{{optB}}" name="optB"/>
-    <input type="button" class="answer" value= "{{optC}}" name="optC"/>
-    <input type="button" class="answer" value= "{{optD}}" name="optD"/>
-    {{answer}}
-    {{difficult}}
-    {{/with}}
-    <button class="btn btn-default quizReset">Reset</button>
+    <div class="wrapperquizquestions">
+        {{#with questionWith}}
+        <p class="quizQuestion">{{question}}</p>
+        <input type="button" class="answer" value= "{{optA}}" name="optA"/>
+        <input type="button" class="answer" value= "{{optB}}" name="optB"/>
+        <input type="button" class="answer" value= "{{optC}}" name="optC"/>
+        <input type="button" class="answer" value= "{{optD}}" name="optD"/>
+        {{answer}}
+        {{difficult}}
+        {{/with}}
+        <button class="btn btn-default quizReset">Reset</button>
+    </div>
+    <div class="containerCountdownTimer">
+          <div id="time"></div>
+          <svg id="svgCountDown"></svg>
+          <!--<p><label>Percent:</label><input maxlength="2" type="text" id="input" value="15"/></p>-->
+          <!--<a class="btn" id="run">Run</a>-->
+    </div>
 </template>

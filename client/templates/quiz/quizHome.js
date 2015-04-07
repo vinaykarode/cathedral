@@ -1,19 +1,21 @@
-var interval = Meteor.setInterval(function() {
+// var interval = Meteor.setInterval(function() {
+// console.log('setting interval', Session.get('counter'));
+//     if(Session.get('counter') === 0){
+//         Meteor.clearInterval(interval);
+//         console.log('cleared interval');
+//     }
+//     if(Session.get('counter') <= 15){
+//             var counter = Session.get('counter') - 1;
+//             Session.set('counter',counter);
+//             console.log(Session.get('counter')); 
+//             if(counter <= 0){
+//             Session.set('counter',0);
+//             }
+//     }
+// //            Meteor.clearInterval(interval);
+//             return;
+//         }, 1000) 
 
-    if(Session.get('counter') === 0){
-        Meteor.clearInterval(interval);
-    }
-    if(Session.get('counter') <= 15){
-            var counter = Session.get('counter') - 1;
-            Session.set('counter',counter);
-            console.log(Session.get('counter')); 
-            if(counter <= 0){
-            Session.set('counter',0);
-            }
-    }
-//            Meteor.clearInterval(interval);
-            return;
-        }, 1000) 
 
 Template.quizHome.events({
     'click .btn':function(){
@@ -39,27 +41,33 @@ Template.quizHome.events({
     },
     
     'click #europe':function(){
-    console.log('in europe');
+        Session.set('counter',15);
+        console.log('in europe', Session.get('counter'));
         Router.go('quizPlay',{continent:'europe'});
 },
      'click #asia':function(){
-    console.log('in asia');
+        Session.set('counter',15);
+        console.log('in asia', Session.get('counter'));        
         Router.go('quizPlay',{continent:'asia'});
 },
      'click #africa':function(){
     console.log('in africa');
+        Session.set('counter',15);
         Router.go('quizPlay',{continent:'africa'});
 },
      'click #australia':function(){
     console.log('in australia');
+        Session.set('counter',15);
         Router.go('quizPlay',{continent:'australia'});
 },
      'click #north_america':function(){
     console.log('in north_america');
+        Session.set('counter',15);
         Router.go('quizPlay',{continent:'nAmerica'});
 },
      'click #south_america':function(){
     console.log('in south_america');
+        Session.set('counter',15);
         Router.go('quizPlay',{continent:'sAmerica'});
 }
     
@@ -89,6 +97,24 @@ Template.quizHome.rendered=function(){
     function outContinent(){
         this.attr({fill:'#cccccc',stroke:'#ffffff',strokewidth:'0.1'})
     }
+    
+    // this.find('#continent-map')._uihooks = {
+    //     insertElement: function(node, next) {
+    //     console.log('inserting element');
+    //         $(node)
+    //             .hide()
+    //             .insertBefore(next)
+    //             .fadeIn();
+    //     },
+    //     removeElement : function(node, next){
+    //     console.log('removing element');
+    //         $(node).fadeOut(function(){
+    //             console.log('faded out');
+    //             this.remove();
+    //         });
+    //     }
+    // };
+    
 }
 
   
