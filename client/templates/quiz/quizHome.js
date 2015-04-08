@@ -1,3 +1,10 @@
+Meteor.startup(function(){
+
+})
+
+
+
+
 // var interval = Meteor.setInterval(function() {
 // console.log('setting interval', Session.get('counter'));
 //     if(Session.get('counter') === 0){
@@ -115,6 +122,72 @@ Template.quizHome.rendered=function(){
     //     }
     // };
     
+var Engine = famous.core.Engine;
+var Modifier = famous.core.Modifier;
+var Transform = famous.core.Transform;
+var ImageSurface = famous.surfaces.ImageSurface; 
+var Surface = famous.core.Surface;
+var Easing = famous.transitions.Easing;
+var StateModifier = famous.modifiers.StateModifier;
+var Transitionable = famous.transitions.Transitionable;
+var SpringTransition = famous.transitions.SpringTransition;
+Transitionable.registerMethod('spring', SpringTransition);
+
+// create the main context
+var mainContext = Engine.createContext();
+
+// your app here
+var logo = new ImageSurface({
+    size: [100, 100],
+    content: 'http://code.famo.us/assets/famous_logo.png',
+    classes: ['double-sided']
+});
+
+var initialTime = Date.now();
+var centerSpinModifier = new Modifier({
+    origin: [0.5, 0.5],
+    align: [0.5, 0.5],
+    // transform : function () {
+    //     return Transform.rotateY(.002 * (Date.now() - initialTime));
+    // }
+});
+
+// mainContext.add(centerSpinModifier).add(logo);
+// mainContext.add(logo);
+   
+var statemodifier = new StateModifier({
+    origin:[0.5,0],
+    align:[0.5,0]
+});
+
+// statemodifier.setTransform(
+//     Transform.translate(0,400,0),{duration:10000, curve:Easing.outBounce}
+//     );
+
+mainContext.add(statemodifier).add(logo);
+
+// logo.on('click',function(){
+//     statemodifier.halt();
+//     statemodifier.setTransform(
+//         Transform.translate(0,500,0),{duration:400, curve:Easing.outBounce}
+//         );
+// })
+
+var spring = {
+  method: 'spring',
+  period: 500,
+  dampingRatio: 0.4
+};
+
+logo.on('mouseover',function(){
+statemodifier.setTransform(
+    Transform.translate(0,500,0),spring
+    ).setTransform(
+    Transform.scale(2,2,1),{}
+    );
+    
+})
+
 }
 
   
