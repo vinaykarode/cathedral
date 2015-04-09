@@ -80,30 +80,11 @@ Template.quizHome.events({
     
 });
 
+
+
 //(function(){
 Template.quizHome.rendered=function(){
-  var continentSvg = Snap('#continent-map'),
-    europe = continentSvg.select('#europe'),
-    asia=continentSvg.select('#asia'),
-    north_america = continentSvg.select('#north_america'),
-    south_america = continentSvg.select('#south_america'),
-    africa = continentSvg.select('#africa'),
-    australia = continentSvg.select('#australia');
-
-
-    europe.hover(inContinent,outContinent);
-    asia.hover(inContinent,outContinent);
-    australia.hover(inContinent,outContinent);
-    africa.hover(inContinent,outContinent);
-    north_america.hover(inContinent,outContinent);
-    south_america.hover(inContinent,outContinent);
-    
-    function inContinent(){
-        this.attr({fill:'green'})
-    }
-    function outContinent(){
-        this.attr({fill:'#cccccc',stroke:'#ffffff',strokewidth:'0.1'})
-    }
+  
     
     // this.find('#continent-map')._uihooks = {
     //     insertElement: function(node, next) {
@@ -121,105 +102,105 @@ Template.quizHome.rendered=function(){
     //         });
     //     }
     // };
-    
-var Engine = famous.core.Engine;
-var Modifier = famous.core.Modifier;
-var Transform = famous.core.Transform;
-var ImageSurface = famous.surfaces.ImageSurface; 
-var Surface = famous.core.Surface;
-var Easing = famous.transitions.Easing;
-var StateModifier = famous.modifiers.StateModifier;
-var Transitionable = famous.transitions.Transitionable;
-var SpringTransition = famous.transitions.SpringTransition;
-Transitionable.registerMethod('spring', SpringTransition);
-
-// create the main context
-var mainContext = Engine.createContext();
-
-// your app here
-var logo = new ImageSurface({
-    size: [100, 100],
-    content: 'http://code.famo.us/assets/famous_logo.png',
-    classes: ['double-sided']
-});
-
-var initialTime = Date.now();
-var centerSpinModifier = new Modifier({
-    origin: [0.5, 0.5],
-    align: [0.5, 0.5],
-    // transform : function () {
-    //     return Transform.rotateY(.002 * (Date.now() - initialTime));
-    // }
-});
-
-// mainContext.add(centerSpinModifier).add(logo);
-// mainContext.add(logo);
-   
-var statemodifier = new StateModifier({
-    origin:[0.5,0],
-    align:[0.5,0]
-});
-
-// statemodifier.setTransform(
-//     Transform.translate(0,400,0),{duration:10000, curve:Easing.outBounce}
-//     );
-
-mainContext.add(statemodifier).add(logo);
-
-// logo.on('click',function(){
-//     statemodifier.halt();
-//     statemodifier.setTransform(
-//         Transform.translate(0,500,0),{duration:400, curve:Easing.outBounce}
-//         );
-// })
-
-var spring = {
-  method: 'spring',
-  period: 500,
-  dampingRatio: 0.4
-};
-
-logo.on('mouseover',function(){
-    
-var translate = Transform.translate(0,400,0);
-var scale = Transform.scale(1.5,1.5,1.5);
-    
-statemodifier.setTransform(
-Transform.multiply(translate,scale),spring,function(){
-    console.log('moved')
-    
-}
-    );
-
-})
-
-var transitionable = new Transitionable(0);
-
-    var surface = new Surface({
-        properties:{
-            backgroundColor:'red'
-        }
-    });
-
-    var modifier = new Modifier({
-        size:[200,200],
-        origin:[0.5,0.5],
-        align:[0.3,0.3],
-        transform : function(){
-            var scale = transitionable.get()
-            return Transform.scale(scale,scale,1);
-        },
-        opacity:function(){
-            return transitionable.get();
-        }
-    });
-    
-    
-    
-    mainContext.add(modifier).add(surface);
-
-    transitionable.set(1,{duration: 800, curve:Easing.outBack});
-    
+//    
+//var Engine = famous.core.Engine;
+//var Modifier = famous.core.Modifier;
+//var Transform = famous.core.Transform;
+//var ImageSurface = famous.surfaces.ImageSurface; 
+//var Surface = famous.core.Surface;
+//var Easing = famous.transitions.Easing;
+//var StateModifier = famous.modifiers.StateModifier;
+//var Transitionable = famous.transitions.Transitionable;
+//var SpringTransition = famous.transitions.SpringTransition;
+//Transitionable.registerMethod('spring', SpringTransition);
+//
+//// create the main context
+//var mainContext = Engine.createContext();
+//
+//// your app here
+//var logo = new ImageSurface({
+//    size: [100, 100],
+//    content: 'http://code.famo.us/assets/famous_logo.png',
+//    classes: ['double-sided']
+//});
+//
+//var initialTime = Date.now();
+//var centerSpinModifier = new Modifier({
+//    origin: [0.5, 0.5],
+//    align: [0.5, 0.5],
+//    // transform : function () {
+//    //     return Transform.rotateY(.002 * (Date.now() - initialTime));
+//    // }
+//});
+//
+//// mainContext.add(centerSpinModifier).add(logo);
+//// mainContext.add(logo);
+//   
+//var statemodifier = new StateModifier({
+//    origin:[0.5,0],
+//    align:[0.5,0]
+//});
+//
+//// statemodifier.setTransform(
+////     Transform.translate(0,400,0),{duration:10000, curve:Easing.outBounce}
+////     );
+//
+//mainContext.add(statemodifier).add(logo);
+//
+//// logo.on('click',function(){
+////     statemodifier.halt();
+////     statemodifier.setTransform(
+////         Transform.translate(0,500,0),{duration:400, curve:Easing.outBounce}
+////         );
+//// })
+//
+//var spring = {
+//  method: 'spring',
+//  period: 500,
+//  dampingRatio: 0.4
+//};
+//
+//logo.on('mouseover',function(){
+//    
+//var translate = Transform.translate(0,400,0);
+//var scale = Transform.scale(1.5,1.5,1.5);
+//    
+//statemodifier.setTransform(
+//Transform.multiply(translate,scale),spring,function(){
+//    console.log('moved')
+//    
+//}
+//    );
+//
+//})
+//
+//var transitionable = new Transitionable(0);
+//
+//    var surface = new Surface({
+//        properties:{
+//            backgroundColor:'red'
+//        }
+//    });
+//
+//    var modifier = new Modifier({
+//        size:[200,200],
+//        origin:[0.5,0.5],
+//        align:[0.3,0.3],
+//        transform : function(){
+//            var scale = transitionable.get()
+//            return Transform.scale(scale,scale,1);
+//        },
+//        opacity:function(){
+//            return transitionable.get();
+//        }
+//    });
+//    
+//    
+//    
+//    mainContext.add(modifier).add(surface);
+//
+//    transitionable.set(1,{duration: 800, curve:Easing.outBack});
+//    
 }
         
 
