@@ -180,15 +180,48 @@ var spring = {
 };
 
 logo.on('mouseover',function(){
-statemodifier.setTransform(
-    Transform.translate(0,500,0),spring
-    ).setTransform(
-    Transform.scale(2,2,1),{}
-    );
     
+var translate = Transform.translate(0,400,0);
+var scale = Transform.scale(1.5,1.5,1.5);
+    
+statemodifier.setTransform(
+Transform.multiply(translate,scale),spring,function(){
+    console.log('moved')
+    
+}
+    );
+
 })
 
+var transitionable = new Transitionable(0);
+
+    var surface = new Surface({
+        properties:{
+            backgroundColor:'red'
+        }
+    });
+
+    var modifier = new Modifier({
+        size:[200,200],
+        origin:[0.5,0.5],
+        align:[0.3,0.3],
+        transform : function(){
+            var scale = transitionable.get()
+            return Transform.scale(scale,scale,1);
+        },
+        opacity:function(){
+            return transitionable.get();
+        }
+    });
+    
+    
+    
+    mainContext.add(modifier).add(surface);
+
+    transitionable.set(1,{duration: 800, curve:Easing.outBack});
+    
 }
+        
 
   
 
