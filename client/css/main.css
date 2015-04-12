@@ -1,6 +1,6 @@
 @import url('//fonts.googleapis.com/css?family=Share+Tech');
 @import url('//fonts.googleapis.com/css?family=Lobster');
-@import url('//fonts.googleapis.com/css?family=Raleway:300');
+@import url('//fonts.googleapis.com/css?family=Raleway:200,300,400,500');
 
 body {
   background: #efefef;
@@ -119,7 +119,58 @@ background: radial-gradient(ellipse at center, rgba(235,241,244,1) 0%, rgba(216,
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f4', endColorstr='#d8ebf8', GradientType=1 );
 }
 
+.wrapperquizquestions{
+  font-family: 'Raleway', 'Share tech', sans-serif;
+    height: 100%;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+.quizQuestion{
+    font-size: 40px;
+    margin-top: 18%;
+    margin-bottom: 5%;
+    text-align: center;
+    font-weight: 300;
+}
 
+.optA{
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 200;
+}
+.optB{
+    margin-top: 20px; 
+    font-size: 30px;
+    font-weight: 200;
+}
+.optC{
+    margin-top: 20px;    
+    font-size: 30px;
+    font-weight: 200;
+}
+.optD{
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: 200;
+}
+
+.btn-outlined.btn-primary {
+    background: none;
+    border: 3px solid #428bca;
+    color: #428bca;
+    border-radius: 20px;
+}
+.btn-outlined.btn-primary:hover,
+.btn-outlined.btn-primary:active {
+    color: #FFF;
+    background: #428bca;
+    border-color: #428bca:
+}
 /*
 .map{
 background: rgba(255,255,255,1);
