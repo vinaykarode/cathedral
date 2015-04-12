@@ -6,7 +6,9 @@ Template.quizPlay.events({
         console.log(template.data[this.answer]);
         if (quizAnswer === template.data[this.answer]) {
             Session.set('counter',15);
-            run(Session.get('counter')/100); /* reset the counter to start from 15 sec */
+//            run(Session.get('counter')/100); /* reset the counter to start from 15 sec */
+            UI._globalHelpers['stopTimer']();
+            UI._globalHelpers['startTimer'](15);
             console.log('correct answer');
             var postattributes = {
                 _id: template.data._id
@@ -36,7 +38,9 @@ Template.quizPlay.events({
         }
             else {
             Session.set('counter',15);
-            run(Session.get('counter')/100); /* reset the counter to start from 15 sec */
+//            run(Session.get('counter')/100); /* reset the counter to start from 15 sec */
+                UI._globalHelpers['stopTimer']();
+                UI._globalHelpers['startTimer'](15);
             console.log('incorrect answer');
             var postattributes = {
                 _id: template.data._id
@@ -59,6 +63,7 @@ Template.quizPlay.events({
     'click .quizReset':function(e,template){
         e.preventDefault();
         Session.set('counter',0);
+        UI._globalHelpers['removeCountDown']();
         Meteor.call('quizReset', function(error,result){
             if(error)
                 console.log(error);
@@ -80,28 +85,4 @@ Template.quizPlay.helpers({
         }
     }
 });
-
-
-// Template.quizPlay.rendered= function(){
-//     console.log(Session.get('selectedContinent'));
-//     var quizQuestion = $('.quizQuestion').text();
-//     console.log(quizQuestion);
-//     if(!quizQuestion){
-//         Router.go('quizPlay',{continent:Session.get('selectedContinent')});
-//     }
-
-// };
-
-// var EVENTS, OFFSCREEN_CLASS, hooks;
-
-// Template.quizPlay.rendered = function(){
-//     return this.find('.wrapper-quiz-questions')._uihooks = {
-//         insertElement : function(node, next){
-//           $(node).addClass('off').insertBefore(next);
-//           return Tracker.afterFlush(function() {
-//             return $(node).removeClass('off');
-//           });
-//         }
-//     }
-// }
 

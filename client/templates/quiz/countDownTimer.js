@@ -1,5 +1,4 @@
-Template.countDownTimer.rendered = function () {
-    console.log('countdown tiemr rendereing')
+
 var Engine = famous.core.Engine;
 var Modifier = famous.core.Modifier;
 var Transform = famous.core.Transform;
@@ -11,7 +10,89 @@ var Easing = famous.transitions.Easing;
 var Transitionable = famous.transitions.Transitionable;
 var Timer = famous.utilities.Timer;
 
+var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifier, createdBox, createdBox1, counter, transitioned, transitioned1, set;
 
+ function startTimer() {
+       counter -= 1;
+    console.log(counter);
+    if(counter >= 10){
+        createdBox._child[0]._child._object.setContent('1')
+        var unitsValue = counter % 10;
+        console.log(unitsValue)
+        createdBox1._child[0]._child._object.setContent(unitsValue)
+    }
+    if(counter < 10 && transitioned == 1){
+        createdBox._child[0]._child._object.setProperties({boxShadow:'0px 0px 0px #000'})
+        createdBox._child[3]._child._object.setContent('0')
+        createdBox._child[3]._child._object.setProperties({backgroundColor:'#FF775E'})
+        createdBox._child[3]._child._object.setProperties({boxShadow:'-10px 10px 40px #888888'})
+        createdBox._child[5]._child._object.setProperties({backgroundColor:'#B22202'})
+        createdBox._child[1]._child._object.setProperties({backgroundColor:'#B22202'})
+        
+        var x = transitionable.get() + Math.PI/2
+        transitionable.set(x, {
+          duration: 500, curve: Easing.outBounce
+        });
+        transitionable1.set(x, {
+          duration: 500, curve: Easing.outBounce
+        });
+        
+        transitioned = 0;
+    }
+       if(counter < 10 && transitioned1 == 1){
+            createdBox1._child[0]._child._object.setProperties({boxShadow:'0px 0px 0px #000'})
+           createdBox1._child[3]._child._object.setContent(counter)
+            createdBox1._child[3]._child._object.setProperties({backgroundColor:'#FF775E'})
+            createdBox1._child[3]._child._object.setProperties({boxShadow:'-5px 5px 40px #888888'})
+            createdBox1._child[5]._child._object.setProperties({backgroundColor:'#B22202'})
+            createdBox1._child[1]._child._object.setProperties({backgroundColor:'#B22202'})
+       }
+//        createdBox._child[0]._child._object.setContent( --counter)
+    }
+
+
+
+Template.registerHelper('startTimer', function(count){
+       counter = count
+     transitioned = 1;
+     transitioned1 = 1;
+      set = Timer.setInterval(startTimer, 1000);
+})
+
+Template.registerHelper('stopTimer', function(){
+    Timer.clear(set);
+    console.log(counter)
+    createdBox1._child[0]._child._object.setContent('5')
+    if(counter < 10 && transitioned == 0){
+        var x = transitionable.get() - Math.PI/2
+        transitionable.set(x, {
+          duration: 500, curve: Easing.outBounce
+        });
+        transitionable1.set(x, {
+          duration: 500, curve: Easing.outBounce
+        });
+        
+        createdBox1._child[0]._child._object.setContent('5')
+        createdBox1._child[3]._child._object.setProperties({backgroundColor:'#008BB2'})
+        createdBox1._child[5]._child._object.setProperties({backgroundColor:'#008BB2'})    
+        createdBox._child[3]._child._object.setProperties({backgroundColor:'#008BB2'})
+        createdBox._child[5]._child._object.setProperties({backgroundColor:'#008BB2'})
+        createdBox._child[3]._child._object.setProperties({boxShadow:'0px 0px 0px #000'})
+        createdBox1._child[3]._child._object.setProperties({boxShadow:'0px 0px 0px #000'})
+        createdBox._child[0]._child._object.setProperties({boxShadow:'-10px 10px 40px #888888'})
+        createdBox1._child[0]._child._object.setProperties({boxShadow:'-10px 10px 40px #888888'})
+    }  
+})
+
+Template.registerHelper('removeCountDown',function(){
+    Timer.clear(set);
+    createdBox.render = function () { return null;}
+    createdBox1.render = function () { return null;}
+})
+
+
+Template.countDownTimer.rendered = function () {
+    console.log('countdown tiemr rendereing')
 // create the main context
 var mainContext = Engine.createContext();
 
@@ -19,7 +100,7 @@ var mainContext = Engine.createContext();
     //render box
 
   // var mainContext = Engine.createContext();
-  mainContext.setPerspective(3000);
+  mainContext.setPerspective(5000);
   
   var quaternion = new Quaternion(1, 0, 0, 0);
   var moveQuaternion = new Quaternion(185, 0, 0, 0);
@@ -32,10 +113,10 @@ var mainContext = Engine.createContext();
   });
     
   
-  var transitionable = new Transitionable(0);
-  var transitionable1 = new Transitionable(0);
+   transitionable = new Transitionable(0);
+   transitionable1 = new Transitionable(0);
     
-  var rotationModifier = new Modifier({
+   rotationModifier = new Modifier({
     origin: [0.5, 0.5],
     align: [0.7, 0.2],
     transform: function() {
@@ -46,7 +127,7 @@ var mainContext = Engine.createContext();
     },
   });
 
-    var unitsPlaceRotationModifier = new Modifier({
+     unitsPlaceRotationModifier = new Modifier({
     origin: [0.5, 0.5],
     align: [0.8, 0.2],
     transform: function() {
@@ -72,53 +153,26 @@ var mainContext = Engine.createContext();
     
   // }
 
-  
-    Engine.on('click',function(){
-        console.log('clicked 3d box');
-        var x = transitionable.get() + Math.PI*2
-        transitionable.set(x, {
-          duration: 1000, curve: Easing.outBounce
-        });
-    })
+//  
+//    Engine.on('click',function(){
+//        console.log('clicked 3d box');
+//        var x = transitionable.get() + Math.PI*2
+//        transitionable.set(x, {
+//          duration: 1000, curve: Easing.outBounce
+//        });
+//    })
 
-var createdBox = createBox(130,130,130)
-var createdBox1 = createBox(130,130,130)
+ createdBox = createBox(130,130,130)
+ createdBox1 = createBox(130,130,130)
 mainContext.add(rotationModifier).add(createdBox);
 mainContext.add(unitsPlaceRotationModifier).add(createdBox1);
     
-    var counter = 15;
-    var transitioned = 1;
-    var transitioned1 = 1;
-   Timer.setInterval(function() {
-       counter -= 1;
-    console.log(counter);
-    if(counter >= 10){
-        createdBox._child[0]._child._object.setContent('1')
-        var unitsValue = counter % 10;
-        console.log(unitsValue)
-        createdBox1._child[0]._child._object.setContent(unitsValue)
-    }
-    if(counter < 10 && transitioned == 1){
-        createdBox._child[3]._child._object.setContent('0')
-        var x = transitionable.get() + Math.PI/2
-        transitionable.set(x, {
-          duration: 500, curve: Easing.outBounce
-        });
-        transitionable1.set(x, {
-          duration: 500, curve: Easing.outBounce
-        });
-        
-        transitioned = 0;
-    }
-       if(counter < 10 && transitioned1 == 1){
-           createdBox1._child[3]._child._object.setContent(counter)
-       }
-//        createdBox._child[0]._child._object.setContent( --counter)
-    }, 1000);
-    
-
 
     
+//    timer();
+    UI._globalHelpers['startTimer'](15);
+ createdBox._child[0]._child._object.setContent('1')
+ createdBox1._child[0]._child._object.setContent('5')
     
     Engine.on('keyup', function(e) {
     console.log('keyEvent',e.keyIdentifier);
@@ -188,19 +242,20 @@ var boxsurface, box, frontSide;
         properties:{
         lineHeight: depth + 'px',
         textAlign: 'center',
-        backgroundColor: '#ddd',
+        backgroundColor: '#26CFFF',
         overflow: 'hidden',
-        color: '#777',
-        fontSize:'100px',
+        color: '#fff',
+        fontSize:'130px',
         fontFamily:'Raleway',
-        fontWeight:'200'
+        fontWeight:'300',
+        boxShadow:'-10px 10px 40px #888888'
         },
         transform:Transform.translate(0,0,depth/2)
       });
       //back
       createSide({
         size:[width,height],
-        content:'back',
+        content:'',
         properties:{
         lineHeight: height + 'px',
         textAlign: 'center',
@@ -217,7 +272,7 @@ var boxsurface, box, frontSide;
       //top
       createSide({
         size:[width,depth],
-        content:'top',
+        content:'',
         properties:{
         lineHeight: depth + 'px',
         textAlign: 'center',
@@ -231,16 +286,16 @@ var boxsurface, box, frontSide;
       //bottom
       createSide({
         size:[width,depth],
-        content:'bottom',
+        content:'',
         properties:{
         lineHeight: depth + 'px',
         textAlign: 'center',
-        backgroundColor: '#ddd',
+        backgroundColor: '#008BB2',
         overflow: 'hidden',
-        color: '#777',
-        fontSize:'100px',
+        color: '#fff',
+        fontSize:'130px',
         fontFamily:'Raleway',
-        fontWeight:'200'
+        fontWeight:'300'
         },
         transform:Transform.multiply(Transform.translate(0,height/2,0), Transform.multiply(Transform.rotateX(-Math.PI/2),Transform.rotateZ(Math.PI*2)))
       });
@@ -248,7 +303,7 @@ var boxsurface, box, frontSide;
       //right
       createSide({
         size:[depth,height],
-        content:'right',
+        content:'',
         properties:{
         lineHeight: height + 'px',
         textAlign: 'center',
@@ -262,11 +317,11 @@ var boxsurface, box, frontSide;
       //left
       createSide({
         size:[depth,height],
-        content:'left',
+        content:'',
         properties:{
         lineHeight: height + 'px',
         textAlign: 'center',
-        backgroundColor: '#333',
+        backgroundColor: '#008BB2',
         overflow: 'hidden',
         color: '#777'          
         },
