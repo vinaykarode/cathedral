@@ -83,6 +83,7 @@ Template.quizPlay.events({
         Session.set('counter',0);
         UI._globalHelpers['removeCountDown']();
         Meteor.call('quizReset', function(error,result){
+            Session.set('score', 0);
             if(error)
                 console.log(error);
             Router.go('quizHome');

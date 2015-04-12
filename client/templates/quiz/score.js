@@ -100,6 +100,10 @@ Template.registerHelper('scoreChange',function(){
 })
 
 Template.registerHelper('removeScoreRenderer',function(){
+    rotHun1 = 0;
+    score =0;
+    minus = 0;
+    rotHun =0;
     createdBoxScore0.render = function () { return null;}
     createdBoxScore1.render = function () { return null;}
     createdBoxScore2.render = function () { return null;}
