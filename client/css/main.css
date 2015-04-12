@@ -191,3 +191,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   opacity: 1;
   transition: opacity 800ms ease;
 }
+
+.timer{
+/*    margin-top: 10%;*/
+/*    margin-right: 100%;*/
+    font-size: 50px;
+    font-weight: 100; 
+}

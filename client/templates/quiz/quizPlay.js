@@ -6,9 +6,27 @@ Template.quizPlay.events({
         console.log(template.data[this.answer]);
         if (quizAnswer === template.data[this.answer]) {
             Session.set('counter',15);
+            if(Session.get('quizDifficulty') === 'easy'){
+                var timeBonus = Session.get('counterForScore')
+                Session.set('score', Session.get('score')+10 + timeBonus);
+                console.log('score' + Session.get('score'));
+            }  
+            if(Session.get('quizDifficulty') === 'normal'){
+                var timeBonus = Session.get('counterForScore')
+                Session.set('score', Session.get('score')+20 + timeBonus);
+                console.log('score' + Session.get('score'));
+            } 
+            if(Session.get('quizDifficulty') === 'difficult'){
+                var timeBonus = Session.get('counterForScore')                
+                Session.set('score', Session.get('score')+30 + timeBonus);
+                console.log('score' + Session.get('score'));
+            }
 //            run(Session.get('counter')/100); /* reset the counter to start from 15 sec */
+            
             UI._globalHelpers['stopTimer']();
             UI._globalHelpers['startTimer'](15);
+            UI._globalHelpers['scoreChange']();
+            
             console.log('correct answer');
             var postattributes = {
                 _id: template.data._id

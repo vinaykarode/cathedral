@@ -14,7 +14,8 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
 
  function startTimer() {
        counter -= 1;
-    console.log(counter);
+     Session.set('counterForScore', counter);
+    console.log(Session.get('counterForScore'));
     if(counter >= 10){
         createdBox._child[0]._child._object.setContent('1')
         var unitsValue = counter % 10;
@@ -23,6 +24,8 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
     }
     if(counter < 10 && transitioned == 1){
         createdBox._child[0]._child._object.setProperties({boxShadow:'0px 0px 0px #000'})
+        createdBox._child[0]._child._object.setContent('')
+        createdBox1._child[0]._child._object.setContent('')
         createdBox._child[3]._child._object.setContent('0')
         createdBox._child[3]._child._object.setProperties({backgroundColor:'#FF775E'})
         createdBox._child[3]._child._object.setProperties({boxShadow:'-10px 10px 40px #888888'})
@@ -47,7 +50,28 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
             createdBox1._child[5]._child._object.setProperties({backgroundColor:'#B22202'})
             createdBox1._child[1]._child._object.setProperties({backgroundColor:'#B22202'})
        }
-//        createdBox._child[0]._child._object.setContent( --counter)
+        
+        if(counter <= 0){
+            UI._globalHelpers['stopTimer']();
+            UI._globalHelpers['startTimer'](15);
+            var selectedContinent = Session.get('selectedContinent')
+            var postattributes = {
+                _id: Session.get('selectedID')
+            }
+            console.log('loading new question, timer expired' + selectedContinent+ postattributes._id);
+            Meteor.call('quizCorrectAnswer', postattributes, function(error, result) {
+                if (error)
+                    console.log(error);
+                if (result) {
+                    Session.set('questionEasyCounter',0);
+                    Session.set('questionNormalCounter',0);
+                    Session.set('questionDifficultCounter',0);
+                    Session.set('quizDifficulty','easy');
+                    //console.log(result);
+                    Router.go('quizPlay', {continent: selectedContinent});
+                }
+            });
+        }
     }
 
 
@@ -73,6 +97,7 @@ Template.registerHelper('stopTimer', function(){
         });
         
         createdBox1._child[0]._child._object.setContent('5')
+        createdBox._child[0]._child._object.setContent('1')
         createdBox1._child[3]._child._object.setProperties({backgroundColor:'#008BB2'})
         createdBox1._child[5]._child._object.setProperties({backgroundColor:'#008BB2'})    
         createdBox._child[3]._child._object.setProperties({backgroundColor:'#008BB2'})
@@ -86,6 +111,7 @@ Template.registerHelper('stopTimer', function(){
 
 Template.registerHelper('removeCountDown',function(){
     Timer.clear(set);
+    UI._globalHelpers['removeScoreRenderer']();
     createdBox.render = function () { return null;}
     createdBox1.render = function () { return null;}
 })
