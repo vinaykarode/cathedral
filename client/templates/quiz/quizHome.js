@@ -70,12 +70,12 @@ Template.quizHome.events({
      'click #north_america':function(){
     console.log('in north_america');
         Session.set('counter',15);
-        Router.go('quizPlay',{continent:'nAmerica'});
+        Router.go('quizPlay',{continent:'namerica'});
 },
      'click #south_america':function(){
     console.log('in south_america');
         Session.set('counter',15);
-        Router.go('quizPlay',{continent:'sAmerica'});
+        Router.go('quizPlay',{continent:'samerica'});
 }
     
 });

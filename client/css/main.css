@@ -195,6 +195,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .timer{
 /*    margin-top: 10%;*/
 /*    margin-right: 100%;*/
+  font-family: 'Raleway', 'Share tech', sans-serif;
     font-size: 50px;
     font-weight: 100; 
 }
