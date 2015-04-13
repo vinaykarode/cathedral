@@ -6,6 +6,8 @@ Template.quizPlay.events({
         console.log(template.data[this.answer]);
         if (quizAnswer === template.data[this.answer]) {
             Session.set('counter',15);
+            Session.set('questionsDisplayed', Session.get('questionsDisplayed') +1); 
+        
             if(Session.get('quizDifficulty') === 'easy'){
                 var timeBonus = Session.get('counterForScore')
                 Session.set('score', Session.get('score')+10 + timeBonus);
@@ -46,19 +48,42 @@ Template.quizPlay.events({
                         if(Session.get('questionNormalCounter') >= 3){
                             Session.set('quizDifficulty','difficult');
                             console.log('difficult counter' + Session.get('quizDifficultCounter'));
-                            return Router.go('quizPlay', {continent: template.data.continent});
+                                if(Session.get('questionsDisplayed') >= 2){
+                                    UI._globalHelpers['removeCountDownWithoutScore']();
+                                    console.log('going to leaderboard');
+                                    return Router.go('leaderboard');
+                                }
+                                  return Router.go('quizPlay', {continent: template.data.continent});  
                         }
-                        return Router.go('quizPlay', {continent: template.data.continent});
+                        if(Session.get('questionsDisplayed') >= 2){
+                            UI._globalHelpers['removeCountDownWithoutScore']();
+                            console.log('going to leaderboard');
+                            return Router.go('leaderboard');
+                        }
+                          return Router.go('quizPlay', {continent: template.data.continent});  
                     }
-                    Router.go('quizPlay', {continent: template.data.continent});
+                    if(Session.get('questionsDisplayed') >= 2){
+                        UI._globalHelpers['removeCountDownWithoutScore']();
+                        console.log('going to leaderboard');
+                        return Router.go('leaderboard');
+                    }
+                      return Router.go('quizPlay', {continent: template.data.continent});  
                 }
             });
         }
             else {
             Session.set('counter',15);
 //            run(Session.get('counter')/100); /* reset the counter to start from 15 sec */
+                Session.set('questionsDisplayed', Session.get('questionsDisplayed') +1); 
+                
+                var timeBonus = Session.get('counterForScore')
+                Session.set('score', Session.get('score')+ timeBonus);
+                console.log('score' + Session.get('score'));
+                
                 UI._globalHelpers['stopTimer']();
                 UI._globalHelpers['startTimer'](15);
+                UI._globalHelpers['scoreChange']();
+                
             console.log('incorrect answer');
             var postattributes = {
                 _id: template.data._id
@@ -72,7 +97,11 @@ Template.quizPlay.events({
                     Session.set('questionDifficultCounter',0);
                     Session.set('quizDifficulty','easy');
                     //console.log(result);
-                    Router.go('quizPlay', {continent: template.data.continent});
+                    if(Session.get('questionsDisplayed') >= 2){
+                        UI._globalHelpers['removeCountDownWithoutScore']();
+                        return Router.go('leaderboard');                            
+                    }
+                      return Router.go('quizPlay', {continent: template.data.continent});  
                 }
             });
         } 

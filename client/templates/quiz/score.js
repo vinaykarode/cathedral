@@ -8,6 +8,7 @@ var Surface = famous.core.Surface;
 var Easing = famous.transitions.Easing;
 var Transitionable = famous.transitions.Transitionable;
 var Timer = famous.utilities.Timer;
+var SpringTransition = famous.transitions.SpringTransition;
 
 var timer;
 var rotHun1 = 0;
@@ -15,10 +16,12 @@ var score =0;
 var minus = 0;
 var  rotHun =0;
 function scoreChangefn(){
-     timer = Timer.setInterval(scoreinc, 50);
+     timera = Timer.setInterval(scoreinc, 50);
 
     function scoreinc(){
         if(score < Session.get('score')){
+            Session.set('scoreChanged', 0)
+            console.log('score changed' + Session.get('scoreChanged'));
              score += 1;
              minus += 1;
              if(minus >= 10){
@@ -65,8 +68,9 @@ function scoreChangefn(){
              console.log(score);
          }
         if(score >= Session.get('score')){
-            Timer.clear(timer);
             minus = 0;
+            return Timer.clear(timera);
+            console.log('score greater than session variable')
         }
         
         if(score <= 99){
@@ -109,6 +113,22 @@ Template.registerHelper('removeScoreRenderer',function(){
     createdBoxScore2.render = function () { return null;}
 })
 
+Template.registerHelper('moveScoreForLeaderboard',function() {
+    var x0 = [0.4,0.25]
+        positionableAlignScore0.set(x0, {
+          duration: 300, curve: Easing.outBounce
+    });
+    var x1 = [0.5,0.25]
+        positionableAlignScore1.set(x1, {
+          duration: 300, curve: Easing.outBounce
+    }); 
+    var x2 = [0.6,0.25]
+        positionableAlignScore2.set(x2, {
+          duration: 300, curve: Easing.outBounce
+    });
+    
+})
+
 
 
 Template.score.rendered = function(){
@@ -121,9 +141,21 @@ Template.score.rendered = function(){
     transitionableScore1 = new Transitionable(0);
     transitionableScore2 = new Transitionable(0);
     
+    positionableOriginScore0 = new Transitionable([0.5,0.5]);
+    positionableOriginScore1 = new Transitionable([0.5,0.5]);
+    positionableOriginScore2 = new Transitionable([0.5,0.5]);
+        
+    positionableAlignScore0 = new Transitionable([0.1,0.2]);
+    positionableAlignScore1 = new Transitionable([0.2,0.2]);
+    positionableAlignScore2 = new Transitionable([0.3,0.2]);
+    
     rotationModifierScore0 = new Modifier({
-    origin: [0.5, 0.5],
-    align: [0.1, 0.2],
+    origin: function(){
+        return positionableOriginScore0.get();
+    },
+    align: function(){
+        return positionableAlignScore0.get();
+    },
     transform: function() {
         // cache the value of transitionable.get()
         // to optimize for performance
@@ -133,8 +165,12 @@ Template.score.rendered = function(){
     });
     
     rotationModifierScore1 = new Modifier({
-    origin: [0.5, 0.5],
-    align: [0.2, 0.2],
+    origin: function(){
+        return positionableOriginScore1.get();
+    },
+    align: function(){
+        return positionableAlignScore1.get();
+    },
     transform: function() {
         // cache the value of transitionable.get()
         // to optimize for performance
@@ -144,8 +180,12 @@ Template.score.rendered = function(){
     });
     
     rotationModifierScore2 = new Modifier({
-    origin: [0.5, 0.5],
-    align: [0.3, 0.2],
+    origin: function(){
+        return positionableOriginScore2.get();
+    },
+    align: function(){
+        return positionableAlignScore2.get();
+    },
     transform: function() {
         // cache the value of transitionable.get()
         // to optimize for performance
@@ -160,6 +200,7 @@ Template.score.rendered = function(){
     mainContext.add(rotationModifierScore0).add(createdBoxScore0);
     mainContext.add(rotationModifierScore1).add(createdBoxScore1);
     mainContext.add(rotationModifierScore2).add(createdBoxScore2);
+  
   
     var boxsurface, box, frontSide;
 

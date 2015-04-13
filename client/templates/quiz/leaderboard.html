@@ -1,0 +1,19 @@
+<template name="leaderboard">
+        {{#famousContext id="mainCtx"}}
+    
+        {{#View size="[undefined,undefined]"}}
+            
+            {{>Surface template="lead" id="map" size="[undefined,undefined]" origin="[0.5,0.5]" align="[0.5,0.5]" class="map"}}
+                        
+        {{/View}}
+    
+    {{/famousContext}}
+</template>
+
+<template name="lead">
+    <div name = "lead">
+        Leaderboard
+        score: {{score}}
+        <button class="btn btn-default leaderboardQuizReset">Reset</button>
+    </div>
+</template>

@@ -55,20 +55,29 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
             UI._globalHelpers['stopTimer']();
             UI._globalHelpers['startTimer'](15);
             var selectedContinent = Session.get('selectedContinent')
+            Session.set('questionsDisplayed', Session.get('questionsDisplayed') +1); 
             var postattributes = {
                 _id: Session.get('selectedID')
             }
             console.log('loading new question, timer expired' + selectedContinent+ postattributes._id);
             Meteor.call('quizCorrectAnswer', postattributes, function(error, result) {
+              console.log('inside meteor call countdown timer')
                 if (error)
-                    console.log(error);
+                    console.log('method call error from countdowntimer'+error);
                 if (result) {
+                  console.log('got results from meteor call countdwn timer')
                     Session.set('questionEasyCounter',0);
                     Session.set('questionNormalCounter',0);
                     Session.set('questionDifficultCounter',0);
                     Session.set('quizDifficulty','easy');
                     //console.log(result);
-                    Router.go('quizPlay', {continent: selectedContinent});
+                    if(Session.get('questionsDisplayed') >= 2){
+                      UI._globalHelpers['removeCountDownWithoutScore']();
+                      console.logI('going to leaderboard');
+                      return Router.go('leaderboard');
+                    }else{
+                     return  Router.go('quizPlay', {continent: selectedContinent}); 
+                    }
                 }
             });
         }
@@ -112,6 +121,13 @@ Template.registerHelper('stopTimer', function(){
 Template.registerHelper('removeCountDown',function(){
     Timer.clear(set);
     UI._globalHelpers['removeScoreRenderer']();
+    createdBox.render = function () { return null;}
+    createdBox1.render = function () { return null;}
+})
+
+Template.registerHelper('removeCountDownWithoutScore',function(){
+    Timer.clear(set);
+    UI._globalHelpers['moveScoreForLeaderboard']();
     createdBox.render = function () { return null;}
     createdBox1.render = function () { return null;}
 })
