@@ -97,8 +97,8 @@ body {
 }
 
 .continentmapcontainer{
-    width: 1057px;
-	height: 710px;
+    width: 1257px;
+	height: 900px;
 	position: absolute;
 	top:0;
 	bottom: 0;
@@ -444,4 +444,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 .CSSTableGenerator tr:first-child td:last-child{
 	border-width:0px 0px 1px 1px;
+}
+
+.stitched {
+  position: relative;
+
+/*   margin: 120px auto;*/
+    padding: 20px;
+   width: 70%;
+   background: #97b9d3;
+   color: #fff;
+    font-family:'Raleway', 'Share tech', sans-serif;
+	font-weight:200;
+    	font-size:25px;
+/*   line-height: 1.3em;*/
+   border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #97b9d3, 5px 5px 8px 0px rgba(10, 10, 0, 0.5);
+   text-shadow: -1px -1px #97b9d3;
+}
+
+.stitched:hover{
+       background: #26CFFF;
+       border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #26CFFF, 5px 5px 8px 0px rgba(10, 10, 0, 0.5);
+   text-shadow: -1px -1px #26CFFF;
 }

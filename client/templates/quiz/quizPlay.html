@@ -16,29 +16,33 @@
         <table style="width:100%">
             <tr>
                 <td align="center">
-                    <input type="button" class="answer optA btn-outlined btn-primary" value= "{{optA}}" name="optA"/>                    
+                    <input type="button" class="answer optA stitched " value= "{{optA}}" name="optA"/>                    
                 </td>
                 <td align="center">
-                    <input type="button" class="answer optB btn-outlined btn-primary" value= "{{optB}}" name="optB"/>        
+                    <input type="button" class="answer optB stitched " value= "{{optB}}" name="optB"/>        
                 </td>
             </tr>
             <tr>
                 <td align="center">
-                     <input type="button" class="answer optC btn-outlined btn-primary" value= "{{optC}}" name="optC"/>
+                     <input type="button" class="answer optC stitched " value= "{{optC}}" name="optC"/>
                 </td>
                 <td align="center">
-                    <input type="button" class="answer optD btn-outlined btn-primary" value= "{{optD}}" name="optD"/>
+                    <input type="button" class="answer optD stitched " value= "{{optD}}" name="optD"/>
                 </td>
             </tr>
         </table>
+<!--
 
         {{answer}}
         {{difficult}}
+-->
         {{/with}}
-        <button class="btn btn-default quizReset">Reset</button>
+<!--        <button class="btn btn-default quizReset">Reset</button>-->
     </div>
                 {{/Surface}}
 
+                       {{>Surface template="restartQuizBanner" id="restartQuizBanner" size="[650, 200]" translate="[0,0,10]" origin ="[0.5,0.5]" align="[0.06,0.9]" class="restartQuizBanner"}}
+           
             {{/View}}
     
     {{#Surface align="[0.78,0.15]" size="[300,200]" origin="[0.5,0.5]"}}

@@ -107,7 +107,7 @@ Template.quizPlay.events({
         } 
     },
     
-    'click .quizReset':function(e,template){
+    'click .restartQuizBanner':function(e,template){
         e.preventDefault();
         Session.set('counter',0);
         UI._globalHelpers['removeCountDown']();

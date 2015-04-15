@@ -4,7 +4,7 @@
         {{#View size="[undefined,undefined]"}}
             
             {{>Surface template="lead" id="map" size="[undefined,undefined]" origin="[0.5,0.5]" align="[0.5,0.5]" class="map"}}
-                        
+            {{>Surface template="startQuizConquest" id="startQuizConquest" size="[650, 200]" translate="[0,0,10]" origin ="[0.5,0.5]" align="[0.08,0.9]" class="startQuizConquest"}}       
         {{/View}}
     
     {{/famousContext}}
@@ -14,7 +14,7 @@
     <div id = "lead">
 
        
-        <button class="btn btn-default leaderboardQuizReset">Reset</button>
+<!--        <button class="btn btn-default leaderboardQuizReset">Reset</button>-->
     
 <p class="leadertext">This is a Great Score!</p>
 <label class="labeltext" style="color:black;font-weight:300;font-family:Raleway">{{error}}</label>

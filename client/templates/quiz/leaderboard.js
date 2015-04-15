@@ -72,8 +72,9 @@ Template.lead.helpers({
     }
 })
 
-Template.lead.events({
-    'click .leaderboardQuizReset':function(e,template){
+
+Template.leaderboard.events({
+      'click .startQuizConquest':function(e,template){
         e.preventDefault();
         Session.set('counter',0);
         UI._globalHelpers['removeCountDown']();
@@ -83,8 +84,10 @@ Template.lead.events({
                 console.log(error);
             Router.go('quizHome');
         })
-    },
-    
+    },  
+})
+
+Template.lead.events({
     'submit form':function(e,template){
         e.preventDefault();
         
