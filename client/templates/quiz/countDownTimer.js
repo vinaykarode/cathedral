@@ -73,7 +73,7 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
                     //console.log(result);
                     if(Session.get('questionsDisplayed') >= 2){
                       UI._globalHelpers['removeCountDownWithoutScore']();
-                      console.logI('going to leaderboard');
+                      console.log('going to leaderboard');
                       return Router.go('leaderboard');
                     }else{
                      return  Router.go('quizPlay', {continent: selectedContinent}); 

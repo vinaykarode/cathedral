@@ -28,3 +28,7 @@ Meteor.publish('quizQuestion',function(continent){
     return Questions.find({continent:continent});
 })
 
+Meteor.publish('leaderboard', function(continent){
+    return Leaderboard.find({continent:continent});
+})
+

@@ -19,7 +19,7 @@ function scoreChangefn(){
      timera = Timer.setInterval(scoreinc, 50);
 
     function scoreinc(){
-        if(score < Session.get('score')){
+        if(score <= Session.get('score')){
             Session.set('scoreChanged', 0)
             console.log('score changed' + Session.get('scoreChanged'));
              score += 1;
@@ -67,7 +67,7 @@ function scoreChangefn(){
              }    
              console.log(score);
          }
-        if(score >= Session.get('score')){
+        if(score > Session.get('score')){
             minus = 0;
             return Timer.clear(timera);
             console.log('score greater than session variable')
@@ -114,17 +114,17 @@ Template.registerHelper('removeScoreRenderer',function(){
 })
 
 Template.registerHelper('moveScoreForLeaderboard',function() {
-    var x0 = [0.4,0.25]
+    var x0 = [0.4,0.2]
         positionableAlignScore0.set(x0, {
-          duration: 300, curve: Easing.outBounce
+          duration: 700, curve: Easing.outBounce
     });
-    var x1 = [0.5,0.25]
+    var x1 = [0.5,0.2]
         positionableAlignScore1.set(x1, {
-          duration: 300, curve: Easing.outBounce
+          duration: 700, curve: Easing.outBounce
     }); 
-    var x2 = [0.6,0.25]
+    var x2 = [0.6,0.2]
         positionableAlignScore2.set(x2, {
-          duration: 300, curve: Easing.outBounce
+          duration: 700, curve: Easing.outBounce
     });
     
 })
