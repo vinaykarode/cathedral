@@ -15,11 +15,13 @@
     
         {{#View size="[undefined,undefined]"}}
             
-            {{>Surface template="banner" id="homeBanner" size="[650,200]" translate="[0,0,10]" origin="[0.5,0.5]" align="[0.06,0.08]" class="homeBannerClass"}}
+<!--            {{>Surface template="banner" id="homeBanner" size="[650,200]" translate="[0,0,10]" origin="[0.5,0.5]" align="[0.06,0.08]" class="homeBannerClass"}}-->
             
             {{>Surface template="quizMap" id="map" size="[undefined,undefined]" origin="[0.5,0.5]" align="[0.5,0.5]" class="map"}}
               
-            {{>Surface template="sceneTwo" id="sceneFooter" size="[undefined, 300]" translate="[0,0,10]" origin ="[0.5,0.5]" align="[0.5,0.935]" class="sceneFooter"}}
+            {{>Surface template="scene" id="sceneFooter" size="[undefined, 400]" translate="[0,0,10]" origin ="[0.5,0.5]" align="[0.5,0.935]" class="sceneFooter"}}
+            
+                                    {{>Surface template="windmill" id="windmill" size="[300, 300]" translate="[0,0,9]" origin ="[0.5,0.5]" align="[0.1,0.7]" class="windmill"}}
         {{/View}}
     
     {{/famousContext}}
