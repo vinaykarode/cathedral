@@ -48,21 +48,21 @@ Template.quizPlay.events({
                         if(Session.get('questionNormalCounter') >= 3){
                             Session.set('quizDifficulty','difficult');
                             console.log('difficult counter' + Session.get('quizDifficultCounter'));
-                                if(Session.get('questionsDisplayed') >= 2){
+                                if(Session.get('questionsDisplayed') >= 10){
                                     UI._globalHelpers['removeCountDownWithoutScore']();
                                     console.log('going to leaderboard');
                                     return Router.go('leaderboard');
                                 }
                                   return Router.go('quizPlay', {continent: template.data.continent});  
                         }
-                        if(Session.get('questionsDisplayed') >= 2){
+                        if(Session.get('questionsDisplayed') >= 10){
                             UI._globalHelpers['removeCountDownWithoutScore']();
                             console.log('going to leaderboard');
                             return Router.go('leaderboard');
                         }
                           return Router.go('quizPlay', {continent: template.data.continent});  
                     }
-                    if(Session.get('questionsDisplayed') >= 2){
+                    if(Session.get('questionsDisplayed') >= 10){
                         UI._globalHelpers['removeCountDownWithoutScore']();
                         console.log('going to leaderboard');
                         return Router.go('leaderboard');
@@ -97,7 +97,7 @@ Template.quizPlay.events({
                     Session.set('questionDifficultCounter',0);
                     Session.set('quizDifficulty','easy');
                     //console.log(result);
-                    if(Session.get('questionsDisplayed') >= 2){
+                    if(Session.get('questionsDisplayed') >= 10){
                         UI._globalHelpers['removeCountDownWithoutScore']();
                         return Router.go('leaderboard');                            
                     }

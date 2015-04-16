@@ -71,7 +71,7 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
                     Session.set('questionDifficultCounter',0);
                     Session.set('quizDifficulty','easy');
                     //console.log(result);
-                    if(Session.get('questionsDisplayed') >= 2){
+                    if(Session.get('questionsDisplayed') >= 10){
                       UI._globalHelpers['removeCountDownWithoutScore']();
                       console.log('going to leaderboard');
                       return Router.go('leaderboard');
