@@ -1,0 +1,35 @@
+
+<svg version="1.1" id="Objects" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="101 543.9 429 126" enable-background="new 101 543.9 429 126" xml:space="preserve">
+<g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-15.2495" y1="195.9392" x2="701.0357" y2="154.1925" gradientTransform="matrix(-0.7609 0 0 -0.7441 595.6489 749.7554)">
+		<stop  offset="4.716980e-02" style="stop-color:#6C8BA3"/>
+		<stop  offset="0.4858" style="stop-color:#3B6584"/>
+		<stop  offset="1" style="stop-color:#0A3E66"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_1_)" points="497.6,663 530,577.4 156.9,576.8 198.2,662.9 	"/>
+</g>
+<g>
+	
+		<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="546.4427" y1="135.7261" x2="584.3689" y2="201.416" gradientTransform="matrix(-0.7601 0 0 -0.7441 639.882 749.7554)">
+		<stop  offset="4.716980e-02" style="stop-color:#6C8BA3"/>
+		<stop  offset="0.4858" style="stop-color:#3B6584"/>
+		<stop  offset="1" style="stop-color:#0A3E66"/>
+	</linearGradient>
+	<polygon fill="url(#SVGID_2_)" points="239,613.7 173.3,612.5 198.2,663.7 	"/>
+</g>
+<g>
+	
+		<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="526.6185" y1="225.84" x2="701.9489" y2="225.84" gradientTransform="matrix(-0.7601 0 0 -0.7441 639.882 749.7554)">
+		<stop  offset="4.716980e-02" style="stop-color:#6C8BA3"/>
+		<stop  offset="0.4858" style="stop-color:#3B6584"/>
+		<stop  offset="1" style="stop-color:#0A3E66"/>
+	</linearGradient>
+	<polyline fill="url(#SVGID_3_)" points="223.6,550 106.3,549 122.9,614.4 239.6,614.4 	"/>
+</g>
+<text transform="matrix(1 0 0 1 251.3298 607.9986)" fill="#FFFFFF" font-family="'MaturaMTScriptCapitals'" font-size="29.764">Can you conquer</text>
+<text transform="matrix(1 0 0 1 251.3298 607.9986)" fill="none" stroke="#1C75BC" stroke-miterlimit="10" font-family="'MaturaMTScriptCapitals'" font-size="29.764">Can you conquer</text>
+<text transform="matrix(1 0 0 1 251.3298 643.7153)" fill="#FFFFFF" font-family="'MaturaMTScriptCapitals'" font-size="29.764">all the continents ?</text>
+<text transform="matrix(1 0 0 1 251.3298 643.7153)" fill="none" stroke="#1C75BC" stroke-miterlimit="10" font-family="'MaturaMTScriptCapitals'" font-size="29.764">all the continents ?</text>
+</svg>
