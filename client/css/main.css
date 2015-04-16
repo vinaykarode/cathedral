@@ -516,3 +516,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
   width: 550px;
   height: 200px;
 }
+.restartQuizBanner{
+  cursor: pointer;
+}
+.startQuizConquest{
+  cursor: pointer;
+}
