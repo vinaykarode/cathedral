@@ -8,7 +8,7 @@ Template.lead.helpers({
     'leaderboard':function(){
         if(Session.get('playerNameEntered') === 0){
 //            ranks = [];
-            var players = Leaderboard.find({continent:Session.get('selectedContinent')},{sort:{playerScore:-1},limit:5})
+            var players = Leaderboard.find({continent:Session.get('selectedContinent')},{sort:{playerScore:-1},limit:10})
             var play =players.collection._docs._map
             leadboardPlayersLength = Object.keys(play).length;
             var keys = Object.keys(play)
@@ -33,7 +33,7 @@ Template.lead.helpers({
             var playerCurrentScore = Session.get('score');
             var playersRankedHigher = Leaderboard.find({continent:Session.get('selectedContinent'), playerScore:{$gt:playerCurrentScore}}).count();
             console.log(playersRankedHigher);
-            var playersRankedLower = Leaderboard.find({continent:Session.get('selectedContinent'), playerScore:{$lte:playerCurrentScore}},{sort:{playerScore:-1,submitted:-1}, limit:6}).fetch();
+            var playersRankedLower = Leaderboard.find({continent:Session.get('selectedContinent'), playerScore:{$lte:playerCurrentScore}},{sort:{playerScore:-1,submitted:-1}, limit:10}).fetch();
             console.log('playersranked low')
             console.log(playersRankedLower)
             
