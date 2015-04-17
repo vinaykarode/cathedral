@@ -15,11 +15,11 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
  function startTimer() {
        counter -= 1;
      Session.set('counterForScore', counter);
-    console.log(Session.get('counterForScore'));
+    // console.log(Session.get('counterForScore'));
     if(counter >= 10){
         createdBox._child[0]._child._object.setContent('1')
         var unitsValue = counter % 10;
-        console.log(unitsValue)
+        // console.log(unitsValue)
         createdBox1._child[0]._child._object.setContent(unitsValue)
     }
     if(counter < 10 && transitioned == 1){
@@ -59,13 +59,13 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
             var postattributes = {
                 _id: Session.get('selectedID')
             }
-            console.log('loading new question, timer expired' + selectedContinent+ postattributes._id);
+            // console.log('loading new question, timer expired' + selectedContinent+ postattributes._id);
             Meteor.call('quizCorrectAnswer', postattributes, function(error, result) {
-              console.log('inside meteor call countdown timer')
+              // console.log('inside meteor call countdown timer')
                 if (error)
-                    console.log('method call error from countdowntimer'+error);
+                    // console.log('method call error from countdowntimer'+error);
                 if (result) {
-                  console.log('got results from meteor call countdwn timer')
+                  // console.log('got results from meteor call countdwn timer')
                     Session.set('questionEasyCounter',0);
                     Session.set('questionNormalCounter',0);
                     Session.set('questionDifficultCounter',0);
@@ -73,7 +73,7 @@ var transitionable, transitionable1, rotationModifier, unitsPlaceRotationModifie
                     //console.log(result);
                     if(Session.get('questionsDisplayed') >= 10){
                       UI._globalHelpers['removeCountDownWithoutScore']();
-                      console.log('going to leaderboard');
+                      // console.log('going to leaderboard');
                       return Router.go('leaderboard');
                     }else{
                      return  Router.go('quizPlay', {continent: selectedContinent}); 
@@ -94,7 +94,7 @@ Template.registerHelper('startTimer', function(count){
 
 Template.registerHelper('stopTimer', function(){
     Timer.clear(set);
-    console.log(counter)
+    // console.log(counter)
     createdBox1._child[0]._child._object.setContent('5')
     if(counter < 10 && transitioned == 0){
         var x = transitionable.get() - Math.PI/2
@@ -134,7 +134,7 @@ Template.registerHelper('removeCountDownWithoutScore',function(){
 
 
 Template.countDownTimer.rendered = function () {
-    console.log('countdown tiemr rendereing')
+    // console.log('countdown tiemr rendereing')
 // create the main context
 var mainContext = Engine.createContext();
 
@@ -217,7 +217,7 @@ mainContext.add(unitsPlaceRotationModifier).add(createdBox1);
  createdBox1._child[0]._child._object.setContent('5')
     
     Engine.on('keyup', function(e) {
-    console.log('keyEvent',e.keyIdentifier);
+    // console.log('keyEvent',e.keyIdentifier);
     var x = quaternion.x;
     var y = quaternion.y;
     var z = quaternion.z;
@@ -373,6 +373,6 @@ var boxsurface, box, frontSide;
       return box;
       
     }
-console.log(createdBox._child)
+// console.log(createdBox._child)
 
 };

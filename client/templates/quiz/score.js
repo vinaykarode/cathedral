@@ -21,11 +21,11 @@ function scoreChangefn(){
     function scoreinc(){
         if(score <= Session.get('score')){
             Session.set('scoreChanged', 0)
-            console.log('score changed' + Session.get('scoreChanged'));
+            // console.log('score changed' + Session.get('scoreChanged'));
              score += 1;
              minus += 1;
              if(minus >= 10){
-                 console.log('minus');
+                 // console.log('minus');
                  minus = 0;
                 rotHun1 += 1;
                  if(rotHun1 >3){
@@ -45,7 +45,7 @@ function scoreChangefn(){
                  }
                  
                  
-                 console.log('rothun' + rotHun1)
+                 // console.log('rothun' + rotHun1)
                     var x = transitionableScore2.get() - Math.PI/2
                     transitionableScore1.set(x, {
                       duration: 300, curve: Easing.outBounce
@@ -65,18 +65,18 @@ function scoreChangefn(){
                     createdBoxScore1._child[rotHun1]._child._object.setProperties({boxShadow:'10px 10px 40px #888888'})
                     createdBoxScore2._child[rotHun1]._child._object.setProperties({boxShadow:'10px 10px 40px #888888'})
              }    
-             console.log(score);
+             // console.log(score);
          }
         if(score > Session.get('score')){
             minus = 0;
             return Timer.clear(timera);
-            console.log('score greater than session variable')
+            // console.log('score greater than session variable')
         }
         
         if(score <= 99){
          var scoreUnits = score % 10;
          var scoreTens = Math.floor(score/10);    
-         console.log(scoreTens+scoreUnits);
+         // console.log(scoreTens+scoreUnits);
             for(var i = 0; i<=3; i++){
                  createdBoxScore0._child[i]._child._object.setContent('0');
                  createdBoxScore1._child[i]._child._object.setContent(scoreTens);
@@ -88,7 +88,7 @@ function scoreChangefn(){
          var scoreUnits = score % 10;
          var scoreTens = Math.floor((score/10) % 10);
          var scoreHundreds = Math.floor(score/100);
-         console.log(scoreHundreds+scoreTens+scoreUnits);
+         // console.log(scoreHundreds+scoreTens+scoreUnits);
          for(var i = 0; i<=3; i++){
              createdBoxScore0._child[i]._child._object.setContent(scoreHundreds)
              createdBoxScore1._child[i]._child._object.setContent(scoreTens)
@@ -132,7 +132,7 @@ Template.registerHelper('moveScoreForLeaderboard',function() {
 
 
 Template.score.rendered = function(){
-    console.log('rendering score');
+    // console.log('rendering score');
     
     var mainContext = Engine.createContext();
     mainContext.setPerspective(5000);
